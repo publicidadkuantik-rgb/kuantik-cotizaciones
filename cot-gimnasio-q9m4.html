@@ -55,7 +55,10 @@ document.getElementById('fp').innerHTML=`<div class="hd"><img src="${document.qu
 <table><tr><th>#</th><th>Imagen</th><th>Descripción y especificaciones</th><th>Marca</th><th>Cant.</th><th>Precio unit.</th><th>Total</th></tr>${L.map((p,k)=>`<tr><td>${k+1}</td><td>${p.img?`<img src="${p.img}">`:''}</td><td><b>${p.name}</b>${p.note?`<br><small>${p.note}</small>`:''}<ul>${p.specs.map(s=>`<li>${s}</li>`).join('')}</ul></td><td>${p.brand}</td><td>${p.qty}</td><td>${f(p.unit)}</td><td><b>${f(p.unit*p.qty)}</b></td></tr>`).join('')}</table>
 <div class="tt"><div><span>Precio antes de IVA</span><span>${f(b)}</span></div><div><span>IVA 19%</span><span>${f(t-b)}</span></div><div class="g"><span>TOTAL</span><span>${f(t)}</span></div></div><small>Precios unitarios con IVA incluido · COP · ${L.length} productos</small>
 <div class="cond"><h2 style="font-size:16px;margin:0">Condiciones comerciales</h2>${document.getElementById('cond').innerHTML}</div>
-<div class="acts"><button class="big2 gry" onclick="document.getElementById('fin').classList.remove('on')">← Volver a editar</button><button class="big2" onclick="window.print()">Imprimir / guardar PDF</button></div>`;
+<div class="acts"><button class="big" style="background:#25D366" onclick="W()">Enviar mi pedido por WhatsApp</button><button class="big2 gry" onclick="document.getElementById('fin').classList.remove('on')">← Volver a editar</button><button class="big2" onclick="window.print()">Imprimir / guardar PDF</button></div>`;
 document.getElementById('fin').classList.add('on');document.getElementById('fin').scrollTop=0}
+function W(){const L=D.filter(p=>!off[p.id]);let s=0;L.forEach(p=>s+=p.unit*p.qty);
+let m='Hola Kuantik 💜 quiero confirmar mi pedido de la cotización'+(/^_+$/.test('______________________')?'':' de ______________________')+':\n\n'+L.map(p=>'• '+p.qty+' x '+(p.name.length>48?p.name.slice(0,48)+'…':p.name)+' — '+f(p.unit*p.qty)).join('\n')+'\n\n*TOTAL: '+f(s)+'* (IVA incluido)\n\nMi nombre y dirección de entrega: ';
+window.open('https://wa.me/573206946636?text='+encodeURIComponent(m),'_blank')}
 function X(){m.classList.remove('on')}const m=document.getElementById('m');m.onclick=e=>{if(e.target===m)X()};R();
 </script></body></html>
