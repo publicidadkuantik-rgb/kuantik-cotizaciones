@@ -68,7 +68,7 @@ function W(){const L=D.filter(p=>!off[p.id]);let s=0;L.forEach(p=>s+=p.unit*p.qt
 let m='Hola Kuantik 💜 quiero confirmar mi pedido de la cotización'+(/^_+$/.test('Mariana Serna')?'':' de Mariana Serna')+':\n\n'+L.map(p=>'• '+p.qty+' x '+(p.name.length>48?p.name.slice(0,48)+'…':p.name)+' — '+f(p.unit*p.qty)).join('\n')+'\n\n*TOTAL: '+f(s)+'* (IVA incluido)\n\nMi nombre y dirección de entrega: ';
 window.open('https://wa.me/573206946636?text='+encodeURIComponent(m),'_blank')}
 
-const CLI='Mariana Serna',KNOWN=!/^_+$/.test(CLI),MAIL='kuantiksuministrosdesalud@gmail.com';let sentSig='';
+const CLI='Mariana Serna',KNOWN=!/^_+$/.test(CLI),MAIL='9066f77e7d8d8a0e29efcbfbd0ec067c';let sentSig='';
 function sig(){return D.filter(p=>!off[p.id]).map(p=>p.id).join(',')}
 function G(){const st=document.getElementById('st');if(KNOWN){S(CLI,'')}else{st.innerHTML='<b>Último paso:</b> escribe tu nombre y celular para enviar tu pedido a Kuantik.<br><input id="nm" placeholder="Tu nombre" style="padding:10px;margin:6px 6px 0 0;border:1.5px solid #000;border-radius:8px"><input id="ce" placeholder="Celular" style="padding:10px;margin:6px 6px 0 0;border:1.5px solid #000;border-radius:8px"><button class="big2" style="background:#00A2AE" onclick="S(document.getElementById(\'nm\').value,document.getElementById(\'ce\').value)">Enviar pedido</button>'}}
 async function S(nom,cel){const st=document.getElementById('st');if(!nom.trim()){st.innerHTML='<b style="color:#c00">Escribe tu nombre para enviar el pedido.</b>';return}
